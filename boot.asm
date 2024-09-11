@@ -4,9 +4,32 @@ ORG 0
 ;16bit arch
 BITS 16
 
-jmp 0x7c0:start
+_start:
+    jmp short start
+    nop
+
+times 33 db 0 ;33 bytes 
 
 start: 
+
+    jmp 0x7c0:step0
+
+
+; handle_zero:
+;     mov ah,0eh
+;     mov al,'A'
+;     mov bx, 0x00
+;     int 0x10
+;     ret
+
+; handle_one:
+;     mov ah, 0eh
+;     mov al,'B'
+;     mov bx, 0x00
+;     int 0x10
+;     iret
+
+step0:
 ;the address of the label into register 
     cli
     ;data segment
@@ -19,9 +42,41 @@ start:
 
     sti
 
-    mov si,message
+    mov ah, 2
+    mov al, 1
+    mov ch, 0
+    mov cl,2
+    mov dh, 0
+    mov bx, buffer
+    int 0x13 ;Invoking
+    jc issue
+    mov si, buffer
+    call print
+    jmp $ 
+
+issue:
+    mov si, error_message
     call print
     jmp $
+
+    ; int 0
+
+    ;the first two bytes of RAM are the offset for interrup zaro 
+    ; mov word [ss:0x00], handle_zero
+    ; mov word [ss:0x02], 0x7c0
+
+    ; mov word [ss:0x04], handle_one
+    ; mov word [ss:0x06], 0x7c0
+    
+    ; int 1
+    ; ;int 0 -->illigal 
+
+    ; mov ax, 0x00
+    ; div ax
+
+    ; mov si,message
+    ; call print
+    ; jmp $
 
 print:
     mov bx, 0
@@ -43,9 +98,13 @@ print_char:
     int 0x10
     ret 
 
-    
 
-message: db 'Hello Zahra', 0
+
+error_message: db 'Error loading sector', 0
+
+; message: db 'Hello Zahra', 0
 
 times 510 -($ -$$) db 0 
 dw 0xAA55
+
+buffer:
