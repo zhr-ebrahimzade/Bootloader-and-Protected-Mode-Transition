@@ -47,12 +47,3 @@
 Feel free to reach out via email: [ebrahimzade.zhr@gmail.com] if you have questions or suggestions.
 
 
-## Screenshots
-The first stages: 
-
-![1](https://drive.google.com/drive/u/0/folders/1nAJh0Sw0LZ1N1XyJ4zC1ksPSsmKzytm_)
-
-![2](https://drive.google.com/file/d/11U7MEjCxvYXujL1IJHaB134978YLMMKb/view?usp=sharing)
-
-![3](https://drive.google.com/drive/u/0/folders/1nAJh0Sw0LZ1N1XyJ4zC1ksPSsmKzytm_)
-
