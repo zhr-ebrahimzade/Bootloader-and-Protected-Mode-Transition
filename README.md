@@ -1,5 +1,5 @@
 
-#  Breast Cancer Diagnosis Using CESM Images
+#  Bootloader and Protected Mode Transition 
 
 - **Bootloader Development**: Custom bootloader designed to boot in real mode and prepare the system for protected mode transition.
 - **Protected Mode Transition**: Worked on configuring segment descriptors and enabling the A20 line to switch the system into protected mode, allowing access to 32-bit memory addressing.
